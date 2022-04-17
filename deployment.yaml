@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world
+  name: solr-deployment
+  labels: # used to organize and select subsets of Kubernetes objects.
+    app: solrApp
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: hello-world
+      app: solrApp 
   template:
     metadata:
       labels:
-        app: hello-world
+        app: solrApp
     spec:
       containers:
-      - name: hello-world
-        image: civo/docker-hello-world:latest
-        env:
-        - name: HOST_NAME
-          value: "server1.com"
-        - name: PORT_NUMBER
-          value: "9001"
+      - name: solr
+        image: solr
         ports:
-        - containerPort: 8080
+        - containerPort: 8983
+          name: solrapp

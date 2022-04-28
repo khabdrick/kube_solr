@@ -5,7 +5,7 @@ metadata:
   labels: # used to organize and select subsets of Kubernetes objects.
     app: solrApp
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       app: solrApp 
